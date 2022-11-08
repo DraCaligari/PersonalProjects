@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Technical documentation</title>
+</head>
+<body>
+    <nav id="navbar">
+        <header>CSS Documentation</header>
+        <ul>
+            <li>
+                <a class="nav-link" href="#introduction">Introduction </a>
+            </li>
+            <li> 
+                <a class="nav-link" href="#animations">Animations </a> 
+            </li>
+            <li> 
+                <a class="nav-link" href="#display">Display </a> 
+            </li>
+            <li> 
+                <a class="nav-link" href="#fonts">Fonts </a> 
+            </li>
+            <li> 
+                <a class="nav-link" href="#images">Images </a> 
+            </li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section id="introduction" class="main-section">
+            <header><h2>Introduction</h2></header>
+            <article>
+                <p>CSS (Cascading Style Sheets) is the code that styles web content. CSS basics walks through what you need to get started. We'll answer questions like: How do I make text red? How do I make content display at a certain location in the (webpage) layout? How do I decorate my webpage with background images and colors?</p>
+                <p>Like HTML, CSS is not a programming language. It's not a markup language either. CSS is a style sheet language. CSS is what you use to selectively style HTML elements. For example, this CSS selects paragraph text, setting the color to red:</p>
+                <code>
+                    p {
+                        color: red;
+                      }                      
+                </code>
+                <p>Let's try it out! Using a text editor, paste the three lines of CSS (above) into a new file. Save the file as style.css in a directory named styles.</p>
+                <h3>Note the other important parts of the syntax:</h3>
+                <ul>
+                    <li>Apart from the selector, each ruleset must be wrapped in curly braces. ({})</li>
+                    <li>Within each declaration, you must use a colon (:) to separate the property from its value or values.</li>
+                    <li>Within each ruleset, you must use a semicolon (;) to separate each declaration from the next one.</li>
+                </ul>
+                <code>
+                    style-rule ::=
+                    selectors-list {
+                      properties-list
+                    }
+                </code>
+                <h3>Style rule examples</h3>
+                <code>
+                    strong {
+                    color: red;
+                  }
+                  
+                  div.menu-bar li:hover > ul {
+                    display: block;
+                  }
+                </code>
+            </article>
+        </section>
+        <section id="animations" class="main-section">
+            <header><h2>Animations</h2></header>
+            <p>CSS Animations is a module of CSS that lets you animate the values of CSS properties over time, using keyframes. The behavior of these keyframe animations can be controlled by specifying their timing function, duration, their number of repetitions, and other attributes.</p>
+            <p>The animation shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.</p>
+            <code>/* @keyframes duration | easing-function | delay |
+                iteration-count | direction | fill-mode | play-state | name */
+                animation: 3s ease-in 1s 2 reverse both paused slidein;
+                <hr>
+                /* @keyframes name | duration | easing-function | delay */
+                animation: slidein 3s linear 1s;
+                <hr>
+                /* @keyframes name | duration */
+                animation: slidein 3s;</code>
+            <h3>This property is a shorthand for the following CSS properties:</h3>
+            <ul>
+                <li>animation-delay</li>
+                <li>animation-direction</li>
+                <li>animation-duration</li>
+                <li>animation-fill-mode</li>
+            </ul>
+        </section>
+        <section id="display" class="main-section">
+            <header> <h2>Display</h2></header>
+            <article>
+                <h3>Display-box</h3>
+                <p>These keywords define whether an element generates display boxes at all.</p>
+                <code>< display-box ></code>
+                <p>These elements don't produce a specific box by themselves. They are replaced by their pseudo-box and their child boxes. Please note that the CSS Display Level 3 spec defines how the contents value should affect "unusual elements" — elements that aren't rendered purely by CSS box concepts such as replaced elements.</p>
+                <code>
+                    < display-box > = 
+                        contents  |
+                        none    
+                </code>
+                <h4>Example</h4>
+                <code>
+                    p.secret {
+                        display: none;
+                      }
+                </code>
+                <hr>
+                <h3>Display inside</h3>
+                <p>These keywords specify the element's inner display type, which defines the type of formatting context that lays out its contents (assuming it is a non-replaced element). These keywords are used as values of the display property, and can be used for legacy purposes as a single keyword, or as defined in the Level 3 specification alongside a value from the < display-outside > keywords.</p>
+                <ul>
+                    <li>Flow Experimental</li>
+                    <p>The element lays out its contents using flow layout (block-and-inline layout).
+
+                        If its outer display type is inline or run-in, and it is participating in a block or inline formatting context, then it generates an inline box. Otherwise it generates a block container box.
+                        
+                        Depending on the value of other properties (such as position, float, or overflow) and whether it is itself participating in a block or inline formatting context, it either establishes a new block formatting context (BFC) for its contents or integrates its contents into its parent formatting context.</p>
+                    <li>Flow-root</li>
+                    <p>The element generates a block element box that establishes a new block formatting context, defining where the formatting root lies.</p>
+                    <li>Table</li>
+                    <p>These elements behave like HTML < table > elements. It defines a block-level box.</p>
+                    <li>Flex</li>
+                    <p>The element behaves like a block element and lays out its content according to the flexbox model.</p>
+                </ul>
+                <code>
+                    < display-inside > = 
+                        flow       |
+                        flow-root  |
+                        table      |
+                        flex       |
+                        grid       |
+                        ruby       
+                </code>
+                <h3>Example</h3>
+                <code>
+                    .box {
+                        background-color: rgb(224, 206, 247);
+                        border: 5px solid rebeccapurple;
+                        display: flow-root;
+                    }
+                    <hr>
+                    .float {
+                        float: left;
+                        width: 200px;
+                        height: 150px;
+                        background-color: white;
+                        border:1px solid black;
+                        padding: 10px;
+                    }
+                </code>
+            </article>
+        </section>
+        <hr>
+        <section id="fonts" class="main-section">
+            <header><h2>Fonts</h2></header>
+            <p>CSS Fonts is a module of CSS that defines font-related properties and how font resources are loaded. It lets you define the style of a font, such as its family, size and weight, line height, and the glyph variants to use when multiple are available for a single character.</p>
+            <h3>Example</h3>
+            <code>
+                p {
+                    width: 600px;
+                    margin: 0 auto;
+                    font-family: "Helvetica Neue", "Arial", sans-serif;
+                    font-style: italic;
+                    font-weight: 100;
+                    font-variant-ligatures: normal;
+                    font-size: 2rem;
+                    letter-spacing: 1px;
+                  }
+            </code>
+            <h3>Properties</h3>
+            <ul>
+                <li>font-family</li>
+                <li>font-feature-settings</li>
+                <li>font-kerning</li>
+                <li>font-language-override</li>
+                <li>font-optical-sizing</li>
+                <li>font-size</li>
+                <li>font-size-adjust</li>
+                <li>font-stretch</li>
+                <li>font-style</li>
+                <li>font-synthesis</li>
+                <li>font-variant</li>
+                <li>font-weight</li>
+                <li>line-height</li>
+            </ul>
+        </section>
+        <section id="images" class="main-section">
+            <header> <h2>Images</h2></header>
+            <p>CSS Images is a module of CSS that defines what types of images can be used (the < image > type, containing URLs, gradients and other types of images), how to resize them and how they, and other replaced content, interact with the different layout models.</p>
+            <h3>Image Orientation</h3>
+            <p>The image-orientation CSS property specifies a layout-independent correction to the orientation of an image.</p>
+            <code>
+            /* keyword values */
+            image-orientation: none;
+            image-orientation: from-image; /* Use EXIF data from the image */
+
+            /* Global values */
+            image-orientation: inherit;
+            image-orientation: initial;
+            image-orientation: revert;
+            image-orientation: revert-layer;
+            image-orientation: unset;
+            </code>
+            <h3>Image rendering</h3>
+            <p>The image-rendering CSS property sets an image scaling algorithm. The property applies to an element itself, to any images set in its other properties, and to its descendants.</p>
+            <p>The user agent will scale an image when the page author specifies dimensions other than its natural size. Scaling may also occur due to user interaction (zooming). For example, if the natural size of an image is 100×100px, but its actual dimensions are 200×200px (or 50×50px), then the image will be upscaled (or downscaled) using the algorithm specified by image-rendering. This property has no effect on non-scaled images.</p>
+            <code>
+                /* Keyword values */
+                image-rendering: auto;
+                image-rendering: crisp-edges;
+                image-rendering: pixelated;
+
+                /* Global values */
+                image-rendering: inherit;
+                image-rendering: initial;
+                image-rendering: revert;
+                image-rendering: revert-layer;
+                image-rendering: unset;
+            </code>
+            <p>Formal definition:</p>
+            <ul>
+                <li>auto</li>
+                <li>smooth</li>
+                <li>high-quiality</li>
+                <li>pixelated</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

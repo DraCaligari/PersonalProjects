@@ -1,0 +1,464 @@
+    <!-- defer para que el DOM se cargue primero en el JS -->
+    <script defer src="primero.js"></script>
+
+    Tambien existe el noscript para desactivar el JS:
+    <noscript></noscript>
+
+    no se puede acceder a variables desde el global cuando estan dentro de una funcion. 
+
+    variables con "let" no permite que se pueda acceder a la variable desde afuera del bloque.
+    te obliga a ser mas cuidadoso con tu codigo.
+    usar let cuando exclusivamente usare la variable en un solo bloque
+
+    const no se puede re asignar, no varia. si se pueden mutar propiedades del valor.
+            const persona = { nombre: "Juan"}
+
+            persona.nombre = "Andres"
+
+            console.log(persona.nombre)
+			
+	nombrar las funciones como es debido para facilitar el llamado de la misma.
+			function saludar () {
+				console.log("Hola me llamo Tati")
+			}
+			saludar ()
+			
+	Se pueden crear expresiones funcionales, estas expresiones funcionales no se pueden mandar a llamr antes de declararlas 
+			const saludar = function () {
+				console.log ("Hola me llamo Tati")
+			}
+	
+	funciones flecha, es una version acortada de una funcion anonima, no contiene this
+			const saludar = () => {
+				console.log("Hola me llamo Tati")
+			}
+			
+	Argumentos y parametros rest
+	function Suma (...numeros) {
+    const total = numeros.reduce((acc, curr) => acc + curr)
+    console.log(total)
+		}
+
+		Suma(120,232,33)
+
+	si usas return detienes la ejecucion, si es implicito devolvera undefined
+	
+	Closures retornar una funcion desde otr afuncion con acceso al entorno de variables de un ambito exterior 
+
+		function soyUnClosure() {
+    const variableLocal = "Tati"
+    return function() {
+        return variableLocal.toUpperCase()
+   		 	}	
+		}
+
+		const closure= soyUnClosure();
+		console.log(closure())
+
+	sirve para que javascript congele variables en el tiempo que se pueden usar despues, sirven para crear otras funciones
+	function pedirPizza(UID){
+    const pedido = `PEDIDO_${UID}`
+    return function (pizza) {
+        return `${pedido}_${pizza}`
+				}
+			}
+
+			const pedidoUID = pedirPizza(232323)
+			console.log(pedidoUID("hawaina"))
+			console.log(pedidoUID("pollo"))
+	
+	No solamente guarda el estado si no que dento de cada closure se asigna un valor
+
+	function pedirPizza(UID){
+    let cantidadPizzas = 0
+    const pedido = `PEDIDO_${UID}`
+    return function (pizza) {
+        cantidadPizzas++
+        return `${pedido}_${pizza}_${cantidadPizzas}`
+			}
+		}
+
+		const pedidoUID = pedirPizza(232323)
+		console.log(pedidoUID("hawaina"))
+		console.log(pedidoUID("pollo"))
+
+	IIFEs
+	una expresion que hace referencia a la funcion que es inmediatamente invocada
+
+	(function (name) {
+    console.log("La casa " + name)
+	})("azul")
+
+	se pueden añadir () al final para ejercutarla inmediatamente.
+	un ejemplo del uso de ifee es en el for donde se termina un ciclo para continuar con el otro y no tome en cuenta solo el ultimo dato
+	
+		for(var i=0; i<10; i++) {
+			console.log(i);
+			(function(i) {
+			setTimeout(function(){
+				console.log('el numero es ' + i);
+			},1000)
+			})(i)
+		}
+	sirve para no ensuciar lo global. hoy en dia para proteger variables tambien se puede usar llaves y asi solo se puede acceder a ella dentro del bloque:
+		{
+			let name = "Tati
+		}
+
+	CAllbacks es una funcion que se pasa a otra funcion como argumento para un uso despues
+
+		function soyCallback(cb) {
+		cb()
+		}
+	
+	despues de declararla con la misma funcion se puede mandar a llamar a otras: 
+
+		soyCallback(saludar)
+
+	es como si JS hiciera esto:
+
+			soyCallback(function(){
+			console.log("Hola")
+			})
+
+	Otro ejemplo
+
+		function saludar(nombre) {
+			alert("Hola " + nombre)
+		}
+
+		function obtenerNombre(fn) {
+			const nombre = prompt("Introduce tu nombre")
+			fn(nombre)
+		}
+
+		obtenerNombre(saludar)
+	
+	otro ejemplo:
+
+		const nums = [1 ,2 ,3 ,4 ,5 ]
+
+		function hacerDoble (numero) {
+			return numero *2
+		} 
+
+		const doble = nums.map(hacerDoble)
+
+		console.log (doble)
+	
+	Otro ejemplo: 
+		const nums = [1, 2, 3, 4, 5, 6]
+
+		const pares = nums.filter(num => num % 2 === 0)
+
+		console.log(pares)
+
+	El concepto de this
+	Es dinamico por lo tanto depende del contexto de ejecucion. su valor por defecto es window si no estamos en modo estricto, un ejemplo de window es:
+
+		function saludar () {
+			console.log (this)
+		}
+
+		saludar ()
+
+	pero si ponemos "use strict" ahora es undefined.
+	el valor de this es la referencia de un valor y se puede cambiar dinamicamente
+
+		var nombre = "Juan"
+		const persona = {nombre: "andres"}
+
+		function saludar () {
+			console.log(this.nombre)
+		}
+
+		saludar.call(persona) // andres
+
+	en el anterior ejemplo call manda a llamar las propiedades de persona y la variable nombre (juan)
+
+	con applu() se llama el valor de this en una duncion pero lo muestra como un array
+
+		saludar.call(persona, ["buenas noches"])
+
+	cuando se pierde el contexto de this en una funcion dentro de otra funcion se usa .bind(this):
+
+		 var nombre = "Tati"
+			const obj = {
+				nombre: "Nico",
+				saludar () {
+					setTimeout(function(){
+						console.log(this.nombre)
+						}.bind(this), 1000)
+					}
+				
+			obj.saludar()
+	los arrays
+	son objetos recortados
+	length te dice cuantos elementos hay en el array
+			
+		const soyUnArray = []
+		
+		console.log([] === []) /false no hay dos arreys iguales 
+		
+	para cambiar el elemento de un array:
+		const soyUnArray = ["terror", "Accion", "Suspenso"]
+		soyUnArray[0] = "horror"
+
+	para borrar un dato del array:
+		soyUnArray.length = 0
+		
+	pero no se borran propiedades extrañas, tambien se puede usar:
+		tags.splice(0, tags.length)
+
+	Arrays multidimensionales
+
+		const libros = [["IT", 7], ["El resplandor", 9], ["El Exorcista", 10]]
+		console.log(libros[2][0])
+		
+	Desestructuracion de arrays
+
+		const libros = [["IT", 7], ["El resplandor", 9], ["El Exorcista", 10]]
+		const [it, elTerror, elExorcista] = libros
+
+		console.log (it) /['IT', 7]
+
+	poner un espacio vacio con una coma sirve para saltarse el rtraer algunos datos que no necesitas 
+		const [ , [titulo, precio] ] 
+		
+	rest
+	para mandar a llamr el resto de datos
+		const libros = [["IT", 7], ["El resplandor", 9], ["El Exorcista", 10]]
+		const [it, ...rest] = libros
+
+		console.log (rest)
+
+	API de users ramdon
+		const API = "https://randomuser.me/api/?results=5"
+
+		async function getData(){
+			const response = await fetch(API)
+			const data = await response.json()
+			console.log(data)
+		}
+
+		getData()
+		
+	para mostrar un elemento de la api en este caso imagenes 
+		const API = "https://randomuser.me/api/?results=20"
+
+		async function getData(){
+			const response = await fetch(API)
+			const {results:users} = await response.json()
+			showUsers(users)
+		}
+
+		function showUsers(users){
+			users.forEach(user => {
+				const picture = user.picture.medium
+				const img = document.createElement("img")
+				img.src = picture
+				document.body.appendChild(img)
+			})
+		}
+
+		getData()
+
+	ARRAYS AGAIN! (Manipulacion)
+	Para añadir elementos al inicio y mutarlos en un array se puede usar unshift 
+
+		const colores= ["rojo", "verde", "azul"]
+		colores.unshift("Amarillo")
+
+		console.log(colores)
+	
+	Para añadir elementos al inicio sin mutar el array se puede usar spread. con el espread siempre se hace una copia superficial del arreglo.
+
+		const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+
+		const colores2 = [color, ...colores]
+
+
+		console.log(colores, colores2)
+
+	Para añadir elementos al final y mutar el Array se usa un push 
+
+		const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+
+        colores.push(color)
+		console.log(colores)
+
+	Para añadirlos al final sin mutar  (Spread en diferenete posicion)
+		
+		const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+
+		const colores2 = [...colores, color]
+
+		console.log(colores, colores2)
+
+	Para añadir elementos en cualquier indice y mutar el Array podemos usar splice.
+	splice(start, deleteCount, item1, item2, itemN)
+
+		
+		const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+
+        colores.splice(2, 0, color)
+		console.log(colores) / ["rojo", "verde", "Amarillo", "azul"]
+
+	Para añadir elementos o modificar el array mutandola (slice)
+	slice(start, end) hasta el end pero sin incluirlo
+	con una copia temporal: 
+		
+		const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+
+        
+		console.log(colores.slice(0, 2))
+	
+	Añadir N sin mutar y sin temporal
+				const colores= ["rojo", "verde", "azul"]
+		const color = "Amarillo"
+        const colores2 = [
+            ...colores.slice(0,2),
+            color,
+            ...colores.slice(2)
+        ]
+        
+		console.log(colores2)/["rojo", "verde", "amarillo", "azul"]
+	
+	Para eliminar del inicio mutando 
+
+		const rojo = colores.shift() / ["verde", "azul"]
+	
+	PAra eliminar del inicio sin mutar spread y slice
+
+		const colores2 = [...colores.slice(1)]
+		console.log(colores2) / ['verde','azul']
+	
+	Para eliminar del final y mutar podemos usar metodo pop, se retorna lo eliminado
+
+		const azul = colores.pop() / ['rojo','verde']
+
+	Eliminar del final sin mutar 
+
+		const colores2 = [...colores.slice(0, colores.length- 1)] / ['rojo','verde']
+
+	Eliminar cualquier indice mutando
+
+		colores.splice(1,1)
+		console.log(colores) / ['rojo', 'azul']
+
+	Eliminar en cualquier indice sin mutar 
+
+		const index = 1 
+		const colores 2 = [...colores-slice(0,index), ...colores.slice(index +1)] / ['rojo', 'azul']
+	
+	Splice muta y slice no muta 
+
+	Map pasa por cada uno de los elementos y hace algo que se le indique 
+		
+		const colores= ["rojo", "verde", "azul"]
+		const coloresMayuscula = colores.map( color => color.toUpperCase())
+        
+		console.log(coloresMayuscula)
+
+	Encontrar elementos
+	Para encontrar elementos primitivos usar indexof (el porimero que encuentra) devuelve en indice si lo encuentra o -1 si no lo encuentra
+
+		const meses= ['enero', 'febrero', 'marzo', 'abril']
+        const index = meses.indexOf("marzo")
+
+        console.log(meses[index])
+	Para revisar si el elemento se incluye en el arreglo e incluir un elemento
+
+		const meses= ['enero', 'febrero', 'marzo', 'abril']
+        const index = meses.indexOf("marzo")
+		const esAbril = meses.includes("abril")
+		console.log(esAbril)
+
+	Find index
+
+		const colores = [
+			{id: 1, nombre: "Rojo"},
+			{id: 2, nombre: "Verde"},
+			{id: 3, nombre: "Azul"}
+		]
+		const indice = colores
+			.findIndex(color => 
+					color.nombre === "Verde")
+
+		console.log(indice)
+	
+	PAra encontrar el elemento y no su indice se usa find
+
+		const colores = [
+			{ id: 1, nombre: "rojo"},
+			{ id: 2, nombre: "verde"},
+			{ id: 3, nombre: "azul"},
+			]
+			const azul = colores.find(
+			color => color.nombre === "azul")
+
+	Copia superficial y profundaq
+	De forma superficial se usa spread, array.from y similar, la copia superficial son dos elementos separados no mutan entre si
+
+		const original = ['Enero', 'Febrero', 'Marzo', 'Abril'];
+
+		const copia = original.slice()			/
+		const copia =[...original]				/Cualquiera de los 3
+		const copia = Array.from(original)		/
+
+		console.log(copia)
+	
+	Para objetos en la copia superficial:
+		const original = [
+			{id: 1, nombre: "Rojo"},
+			{id: 2, nombre: "Verde"},
+			{id: 3, nombre: "Azul"}
+		]
+
+		const copia =[...original]
+	
+	En el anterior caso si se mutan los dos porque es un objeto y no un array simple de texto, se pasan por referencia
+
+	Copia profunda: 
+	un clon de manera profunda pq se copia el objeto pero se pierde la referencia 
+		const original = [
+			{id: 1, nombre: "Rojo"},
+			{id: 2, nombre: "Verde"},
+			{id: 3, nombre: "Azul"}
+		]
+
+		const copia = JSON.parse(JSON.stringify(original))
+
+		console.log(copia)
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+     

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.center {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    width: 40rem;
+    height: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    margin: -25px 0 0 -25px;
+    padding: 6px 0px 6px 0px;
+}
+
+.center1 {
+    text-align: center;
+    
+}
+
+.marg{
+    border: aliceblue solid 1px !important;
+    color: aliceblue;
+}

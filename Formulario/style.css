@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,100;1,200;1,300;1,400;1,500&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient( 115deg, rgba(58, 58, 158, 0.1), rgba(136, 136, 206, 0.1) ), url(https://64.media.tumblr.com/158c3cb6990bf8f985408dcbfe7b46e6/tumblr_myx8nt3H621qbzzgco1_1280.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.container{
+    max-width: 720px;
+    width: 100%;
+    margin: 3.125rem auto 0 auto;
+    background-color: rgb(75, 75, 141);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+#title{
+    font-size: 5rem;
+    -webkit-text-stroke: 3px #2196f3;
+    color: #ffc107;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#description {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    margin-top: 0.5rem;
+}
+
+#dropdown {
+    height: 3rem;
+}
+.icon-ball{
+    font-size: 25px;
+    vertical-align: middle;
+    color: darkred;
+}
+
+.form-control{
+    display: block;
+    width: 96%;
+    height: 1.5rem;
+    padding: 0.375rem 0.75rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-textarea{
+    height: 5rem;
+}
+
+.submit-button{
+    margin-top: 1rem;
+    width: 20%;
+    height: 2rem;
+}
+
+.center-button{
+    display: flex;
+    justify-content: center;
+}
+
+.typePokemon{
+    border-style: solid none;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 0.15em;
+    color: #F8F8F8;
+    text-shadow: 0 1px 1px #807870;
+    width: 7rem;
+}
+
+.normal{
+    background-color: #A8A878;
+    border-top-color: #D8D8D0;
+    border-bottom-color: #705848;
+}
+
+.fire{
+    background-color: #F08030;
+    border-top-color: #F8D030;
+    border-bottom-color: #C03028;
+}
+
+.grass{
+    background-color: #78C850;
+    border-top-color: #C0F860;
+    border-bottom-color: #588040;
+}
+
+.water {
+    background-color: #6890F0;
+    border-top-color: #98D8D8;
+    border-bottom-color: #807870;
+}
+.electric{
+    background-color: #F8D030;
+    border-top-color: #F8F878;
+    border-bottom-color: #B8A038;
+}
+
+.ice{
+    background-color: #98D8D8;
+    border-top-color: #D0F8E8;
+    border-bottom-color: #9090A0;
+}
+
+.fighting{
+    background-color: #C03028;
+    border-top-color: #F08030;
+    border-bottom-color: #484038;
+}
+
+.poison{
+    background-color: #A040A0;
+    border-top-color: #D880B8;
+    border-bottom-color: #483850;
+}
+
+.ground{
+    background-color: #E0C068;
+    border-top-color: #F8F878;
+    border-bottom-color: #886830;
+}
+
+.flying{
+    background-color: #A890F0;
+    border-top-color: #C8C0F8;
+    border-bottom-color: #705898;
+}
+
+.psychic{
+    background-color: #F85888;
+    border-top-color: #F8C0B0;
+    border-bottom-color: #789010;
+}
+
+.bug{
+    background-color: #A8B820;
+    border-top-color: #D8E030;
+    border-bottom-color: #A8B820;
+}
+
+.rock{
+    background-color: #B8A038;
+    border-top-color: #E0C068;
+    border-bottom-color: #886830;
+}
+
+.ghost{
+    background-color: #705898;
+    border-top-color: #A890F0;
+    border-bottom-color: #483850;
+}
+
+.dark{
+    background-color: #705848;
+    border-top-color: #A8A878;
+    border-bottom-color: #484038;
+}
+
+.dragon{
+    background-color: #7038F8;
+    border-top-color: #B8A0F8;
+    border-bottom-color: #483890;
+}
+
+.steel{
+    background-color: #B8B8D0;
+    border-top-color: #D8D8C0;
+    border-bottom-color: #807870;
+}
+
+.fairy{
+    background-color: #F0B6BC;
+    border-top-color: #F5CAD1;
+    border-bottom-color: #905F63;
+}

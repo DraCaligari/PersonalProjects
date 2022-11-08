@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Form</title>
+</head>
+<body>
+        <header class="header">
+            <h1 id="title">Pokemon Form</h1>
+            <p id="description">
+                What are your favorite pokemon? tell us to make a statistics of favoritism.
+                <span class="material-icons icon-ball">
+                    catching_pokemon
+                </span>
+            </p>
+        </header>
+        <main class="container">
+            <form id="survey-form">
+                <div class="form-group">
+                    <label for="name" id="name-label">Name: </label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name pls" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" id="email-label">Email: </label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email pls" required>
+                </div>
+                <div class="form-group">
+                    <label for="number" id="number-label">Age: </label>
+                    <input type="number" class="form-control" id="number" placeholder="Age" min="1" max="99">
+                </div>
+                <div class="form-group">
+                    <label for="dropdown" id="dropdown-label">What is your favorite region? </label>
+                    <select class="form-control" name="" id="dropdown">
+                        <option value="">--Please choose an option--</option>
+                        <option value="Kanto">Kanto</option>
+                        <option value="Johto">Johto</option>
+                        <option value="Hoenn">Hoenn</option>
+                        <option value="Sinnoh">Sinnoh</option>
+                        <option value="Teselia/Unova">Teselia/Unova</option>
+                        <option value="Kalos">Kalos</option>
+                        <option value="Alola">Alola</option>
+                        <option value="Galar">Galar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>What kind of starter pokemon do you prefer?</p>
+                    <label class="water typePokemon">
+                        <input type="radio" name="starter" class="input-radio" value="water">
+                        Water
+                    </label>
+                    <label class="fire typePokemon">
+                        <input type="radio" name="starter" class="input-radio" value="fire">
+                        Fire
+                    </label>
+                    <label class="grass typePokemon">
+                        <input type="radio" name="starter" class="input-radio" value="grass">
+                        Grass
+                    </label>
+                </div>
+                <div class="form-group">
+                    <p>What are your favorite pokemon types?
+                        <span class="clue"> (You can select somes)</span>
+                    </p>
+                    <label class="normal typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Normal">
+                        Normal
+                    </label>
+                    <label class="fire typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Fire">
+                        Fire
+                    </label>
+                    <label class="water typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Water">
+                        Water
+                    </label>
+                    <label class="grass typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Grass">
+                        Grass
+                    </label>
+                    <label class="electric typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Electric">
+                        Electric
+                    </label>
+                    <label class="ice typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Ice">
+                        Ice
+                    </label>
+                    <label class="fighting typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Fighting">
+                        Fighting
+                    </label>
+                    <label class="poison typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Poison">
+                        Poison
+                    </label>
+                    <label class="ground typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Ground">
+                        Ground
+                    </label>
+                    <label class="flying typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Flying">
+                        Flying
+                    </label>
+                    <label class="psychic typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Psychic">
+                        Psychic
+                    </label>
+                    <label class="bug typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Bug">
+                        Bug
+                    </label>
+                    <label class="rock typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Rock">
+                        Rock
+                    </label>
+                    <label class="ghost typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Ghost">
+                        Ghost
+                    </label>
+                    <label class="dark typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Dark">
+                        Dark
+                    </label>
+                    <label class="dragon typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Dragon">
+                        Dragon
+                    </label>
+                    <label class="steel typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Steel">
+                        Steel
+                    </label>
+                    <label class="fairy typePokemon">
+                        <input type="checkbox" name="types" class="input-checkbox" value="Fairy">
+                        Fairy
+                    </label>
+                </div>
+                <div class="form-group">
+                    <p>Any comments?</p>
+                    <textarea name="comment" id="comments" cols="30" rows="10" class="input-textarea form-control" placeholder="Enter your comment here..."></textarea>
+                </div>
+                <div class="center-button">
+                    <button type="submit" id="submit" class="form-control submit-button">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </main>
+</body>
+</html>

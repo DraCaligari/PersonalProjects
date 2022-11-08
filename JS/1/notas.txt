@@ -1,0 +1,21 @@
+    <!-- defer para que el DOM se cargue primero en el JS -->
+    <script defer src="primero.js"></script>
+
+    Tambien existe el noscript para desactivar el JS:
+    <noscript></noscript>
+
+    no se puede acceder a variables desde el global cuando estan dentro de una funcion. 
+
+    variables con "let" no permite que se pueda acceder a la variable desde afuera del bloque.
+    te obliga a ser mas cuidadoso con tu codigo.
+    usar let cuando exclusivamente usare la variable en un solo bloque
+
+    const no se puede re asignar, no varia. si se pueden mutar propiedades del valor.
+            const persona = { nombre: "Juan"}
+
+            persona.nombre = "Andres"
+
+            console.log(persona.nombre)
+
+
+     
